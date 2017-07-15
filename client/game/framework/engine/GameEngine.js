@@ -1,6 +1,6 @@
 
 
-export default class MonoBehaviour {
+export default class GameEngine {
     constructor() {
 
     }

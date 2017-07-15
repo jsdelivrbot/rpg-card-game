@@ -38,11 +38,13 @@ class Game extends Component {
     }
 
     start() {
-        this.game = new window.Phaser.Game(800, 600, window.Phaser.AUTO, 'game', { preload: this.preload.bind(this), create: this.create.bind(this), update: this.update.bind(this) });
+        if(!this.game)
+            this.game = new window.Phaser.Game(800, 600, window.Phaser.AUTO, 'game', { preload: this.preload.bind(this), create: this.create.bind(this), update: this.update.bind(this) });
     }
 
     quitGame() {
         this.game.destroy();
+        this.game = null;
     }
 
     restart() {

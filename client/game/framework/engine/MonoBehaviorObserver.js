@@ -2,6 +2,7 @@ import GameEngine from './GameEngine';
 
 class MonoBehaviourObserver extends GameEngine {
     constructor() {
+        super();
         this.observers = [];
     }
 
