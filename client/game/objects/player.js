@@ -1,5 +1,5 @@
 import MonoBehaviour from '../framework/engine/MonoBehaviour/MonoBehaviour';
-import world from '../framework/engine/Build/World';
+import gameObject from '../framework/GameObject';
 
 export default class Player extends MonoBehaviour {
     constructor(props) {
@@ -16,7 +16,7 @@ export default class Player extends MonoBehaviour {
         this.cursors = window.game.input.keyboard.createCursorKeys();
 
         // The player and its settings
-        this.player = world.createSprite('mainPlayer', 32, window.game.world.height - 150, 'dude');
+        this.player = gameObject.addSprite('mainPlayer', 32, window.game.world.height - 150, 'dude');
 
         //  We need to enable physics on the player
         window.game.physics.arcade.enable(this.player);
@@ -37,9 +37,9 @@ export default class Player extends MonoBehaviour {
         this.player.bringToTop();
 
         //  Collide the player and the stars with the platforms
-        window.game.physics.arcade.overlap(this.player, world.getGroup('stars'), this.collectStar, null, this);
-        window.game.physics.arcade.collide(world.getGroup('stars'), world.getGroup('platforms'));
-        let hitPlatform = window.game.physics.arcade.collide(this.player, world.getGroup('platforms'));
+        window.game.physics.arcade.overlap(this.player, gameObject.findGroup('stars'), this.collectStar, null, this);
+        window.game.physics.arcade.collide(gameObject.findGroup('stars'), gameObject.findGroup('platforms'));
+        let hitPlatform = window.game.physics.arcade.collide(this.player, gameObject.findGroup('platforms'));
 
 
         //  Reset the players velocity (movement)
@@ -82,7 +82,6 @@ export default class Player extends MonoBehaviour {
         star.kill();
 
         //  Add and update the score
-        //this.score += 10;
-        //this.scoreText.text = 'Score: ' + this.score;
+        gameObject.findComponent('score').increaseScore();
     }
 }

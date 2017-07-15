@@ -1,5 +1,5 @@
 import MonoBehaviour from '../framework/engine/MonoBehaviour/MonoBehaviour';
-import world from '../framework/engine/Build/World';
+import gameObject from '../framework/GameObject';
 
 export default class Sky extends MonoBehaviour {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class Sky extends MonoBehaviour {
     }
 
     create() {
-        let sky = world.createSprite('sky',0, 0, 'sky');
+        let sky = gameObject.addSprite('sky',0, 0, 'sky');
     }
 
     update() {

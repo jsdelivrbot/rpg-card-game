@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import { harmonyConnect } from '../src/base/features/harmony-redux-react-connect';
 import MonoBehaviourObserver from './framework/engine/MonoBehaviour/MonoBehaviorObserver';
-import world from './framework/engine/Build/World';
+import gameObject from './framework/GameObject';
 
 import Player from './objects/player';
 import Sky from './objects/Sky';
 import Ground from './objects/Ground';
 import Stars from './objects/Stars';
-
+import Score from './objects/Score';
 
 class Game extends Component {
 
     constructor (props) {
         super();
 
-        // Properties
-        this.score = 0;
-        this.scoreText = '';
-
-        new Sky();
-        new Ground();
-        new Player();
-        new Stars();
+        gameObject.addComponent('sky', new Sky());
+        gameObject.addComponent('ground', new Ground());
+        gameObject.addComponent('player', new Player());
+        gameObject.addComponent('stars', new Stars());
+        gameObject.addComponent('score', new Score());
 
     }
 
@@ -66,9 +63,6 @@ class Game extends Component {
 
         //  We're going to be using physics, so enable the Arcade Physics system
         window.game.physics.startSystem(window.Phaser.Physics.ARCADE);
-
-        this.scoreText = window.game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-
     }
 
     update() {

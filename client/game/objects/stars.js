@@ -1,5 +1,5 @@
 import MonoBehaviour from '../framework/engine/MonoBehaviour/MonoBehaviour';
-import world from '../framework/engine/Build/World';
+import gameObject from '../framework/GameObject';
 
 export default class Stars extends MonoBehaviour {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class Stars extends MonoBehaviour {
     }
 
     create() {
-        this.stars = world.createGroup('stars');
+        this.stars = gameObject.addGroup('stars');
 
         this.stars.enableBody = true;
 
@@ -19,7 +19,8 @@ export default class Stars extends MonoBehaviour {
         for (let i = 0; i < 12; i++)
         {
             //  Create a star inside of the 'stars' group
-            let star = this.stars.create(i * 70, 0, 'star');
+            let star = gameObject.addSprite('start' + i,i * 70, 0, 'star');
+            this.stars.add(star);
 
             //  Let gravity do its thing
             star.body.gravity.y = 100;

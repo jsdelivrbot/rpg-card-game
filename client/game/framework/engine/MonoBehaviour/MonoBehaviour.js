@@ -1,7 +1,8 @@
 import GameEngine from '../GameEngine';
 import MonoBehaviourObserver from './MonoBehaviorObserver';
+import Component from '../Component';
 
-export default class MonoBehaviour extends GameEngine {
+class MonoBehaviour extends GameEngine {
     constructor(props) {
         super();
 
@@ -35,6 +36,10 @@ export default class MonoBehaviour extends GameEngine {
         MonoBehaviourObserver.Detach(this);
     }
 }
+
+MonoBehaviour.prototype.component = new Component;
+
+export default MonoBehaviour;
 
 
 

@@ -1,5 +1,5 @@
 import MonoBehaviour from '../framework/engine/MonoBehaviour/MonoBehaviour';
-import world from '../framework/engine/Build/World';
+import gameObject from '../framework/GameObject';
 
 export default class Ground extends MonoBehaviour {
     constructor(props) {
@@ -12,13 +12,13 @@ export default class Ground extends MonoBehaviour {
 
     create() {
         //  The platforms group contains the ground and the 2 ledges we can jump on
-        this.platforms = world.createGroup('platforms');
+        this.platforms = gameObject.addGroup('platforms');
 
         //  We will enable physics for any object that is created in this group
         this.platforms.enableBody = true;
 
         // Here we create the ground.
-        let ground = world.createSprite('ground1', 0, window.game.world.height - 64, 'ground');
+        let ground = gameObject.addSprite('ground1', 0, window.game.world.height - 64, 'ground');
         this.platforms.add(ground);
 
         //  Scale it to fit the width of the game (the original sprite is 400x32 in size)

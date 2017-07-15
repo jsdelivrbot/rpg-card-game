@@ -4,6 +4,8 @@ class HubObjects {
     constructor() {
         this.sprites = {};
         this.groups = {};
+        this.texts = {};
+        this.components = {};
     }
 }
 
