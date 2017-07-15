@@ -1,4 +1,4 @@
-import GameEngine from './GameEngine';
+import GameEngine from '../GameEngine';
 
 class MonoBehaviourObserver extends GameEngine {
     constructor() {
@@ -37,4 +37,3 @@ class MonoBehaviourObserver extends GameEngine {
 
 //singleton
 export default new MonoBehaviourObserver();
-console.log("created MonoBehaviourObserver");
